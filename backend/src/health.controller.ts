@@ -63,32 +63,32 @@ export class HealthController {
     });
 
     const subcategories = [
-      { name: 'Cilt Bakimi', slug: 'cilt-bakimi', category: categoryBakim },
-      { name: 'Sac Bakimi', slug: 'sac-bakimi', category: categoryBakim },
-      { name: 'Vucut Bakimi', slug: 'vucut-bakimi', category: categoryBakim },
-      { name: 'Goz Makyaji', slug: 'goz-makyaji', category: categoryMakyaj },
-      { name: 'Dudak Makyaji', slug: 'dudak-makyaji', category: categoryMakyaj },
-      { name: 'Yuz Makyaji', slug: 'yuz-makyaji', category: categoryMakyaj },
+      { name: 'Cilt Bakimi', category: 'BAKIM', categoryId: categoryBakim.id },
+      { name: 'Sac Bakimi', category: 'BAKIM', categoryId: categoryBakim.id },
+      { name: 'Vucut Bakimi', category: 'BAKIM', categoryId: categoryBakim.id },
+      { name: 'Goz Makyaji', category: 'MAKYAJ', categoryId: categoryMakyaj.id },
+      { name: 'Dudak Makyaji', category: 'MAKYAJ', categoryId: categoryMakyaj.id },
+      { name: 'Yuz Makyaji', category: 'MAKYAJ', categoryId: categoryMakyaj.id },
     ];
     for (const sub of subcategories) {
       await this.subcategoryRepo.save(sub);
     }
 
     const tags = [
-      { name: 'Kuru Cilt', slug: 'kuru-cilt', category: categoryBakim },
-      { name: 'Yagli Cilt', slug: 'yagli-cilt', category: categoryBakim },
-      { name: 'Karma Cilt', slug: 'karma-cilt', category: categoryBakim },
-      { name: 'Akne', slug: 'akne', category: categoryBakim },
-      { name: 'Nemlendirici', slug: 'nemlendirici', category: categoryBakim },
-      { name: 'Gunes Koruyucu', slug: 'gunes-koruyucu', category: categoryBakim },
-      { name: 'Serum', slug: 'serum', category: categoryBakim },
-      { name: 'Fondoten', slug: 'fondoten', category: categoryMakyaj },
-      { name: 'Ruj', slug: 'ruj', category: categoryMakyaj },
-      { name: 'Maskara', slug: 'maskara', category: categoryMakyaj },
-      { name: 'Far', slug: 'far', category: categoryMakyaj },
-      { name: 'Eyeliner', slug: 'eyeliner', category: categoryMakyaj },
-      { name: 'Allik', slug: 'allik', category: categoryMakyaj },
-      { name: 'Kapatici', slug: 'kapatici', category: categoryMakyaj },
+      { name: 'Kuru Cilt', category: 'BAKIM' },
+      { name: 'Yagli Cilt', category: 'BAKIM' },
+      { name: 'Karma Cilt', category: 'BAKIM' },
+      { name: 'Akne', category: 'BAKIM' },
+      { name: 'Nemlendirici', category: 'BAKIM' },
+      { name: 'Gunes Koruyucu', category: 'BAKIM' },
+      { name: 'Serum', category: 'BAKIM' },
+      { name: 'Fondoten', category: 'MAKYAJ' },
+      { name: 'Ruj', category: 'MAKYAJ' },
+      { name: 'Maskara', category: 'MAKYAJ' },
+      { name: 'Far', category: 'MAKYAJ' },
+      { name: 'Eyeliner', category: 'MAKYAJ' },
+      { name: 'Allik', category: 'MAKYAJ' },
+      { name: 'Kapatici', category: 'MAKYAJ' },
     ];
     for (const tag of tags) {
       await this.tagRepo.save(tag);
