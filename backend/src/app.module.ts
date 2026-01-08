@@ -32,7 +32,7 @@ import { HealthController } from './health.controller';
             type: 'postgres',
             url: databaseUrl,
             autoLoadEntities: true,
-            synchronize: !isProduction,
+            synchronize: true,
             ssl: isProduction ? { rejectUnauthorized: false } : false,
           };
         }
@@ -45,7 +45,7 @@ import { HealthController } from './health.controller';
           password: configService.get<string>('DB_PASS') || 'Boklusuolsun1:',
           database: configService.get<string>('DB_NAME') || 'rarity',
           autoLoadEntities: true,
-          synchronize: !isProduction,
+          synchronize: true,
           ssl: isProduction ? { rejectUnauthorized: false } : false,
         };
       },
