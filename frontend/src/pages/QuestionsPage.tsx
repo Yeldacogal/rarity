@@ -128,13 +128,19 @@ export default function QuestionsPage() {
     : [];
 
   const filteredTags = tags.filter(tag => {
-    if (selectedSubcategoryId) {
-      return tag.subcategoryId === selectedSubcategoryId;
-    }
-    if (selectedCategory) {
-      return tag.category?.toUpperCase() === selectedCategory.toUpperCase();
-    }
-    return false;
+    // Önce kategori kontrolü
+    if (!selectedCategory) return false;
+    
+    const categoryMatches = tag.category?.toUpperCase() === selectedCategory.toUpperCase();
+    if (!categoryMatches) return false;
+    
+    // Alt kategori seçilmemişse, kategorideki tüm tag'leri göster
+    if (!selectedSubcategoryId) return true;
+    
+    // Alt kategori seçiliyse:
+    // - Tag'in subcategoryId'si varsa ve eşleşiyorsa göster
+    // - Tag'in subcategoryId'si yoksa da göster (kategoriye genel ait tag'ler)
+    return !tag.subcategoryId || tag.subcategoryId === selectedSubcategoryId;
   });
 
   return (

@@ -168,11 +168,11 @@ export default function AdminTagsPage() {
   };
 
   const filteredSubcategoriesForTag = subcategories.filter(
-    sc => sc.category === newTagCategory
+    sc => sc.category?.toUpperCase() === newTagCategory?.toUpperCase()
   );
   
   const filteredSubcategoriesForEditTag = subcategories.filter(
-    sc => sc.category === editingTagCategory
+    sc => sc.category?.toUpperCase() === editingTagCategory?.toUpperCase()
   );
 
   const getSubcategoryName = (subcategoryId?: number) => {
@@ -334,7 +334,7 @@ export default function AdminTagsPage() {
           </div>
 
           {categories.map(category => {
-            const categorySubcategories = subcategories.filter(sc => sc.category === category.slug);
+            const categorySubcategories = subcategories.filter(sc => sc.category?.toUpperCase() === category.slug?.toUpperCase());
             if (categorySubcategories.length === 0) return null;
             
             return (
@@ -470,10 +470,10 @@ export default function AdminTagsPage() {
           </div>
 
           {categories.map(category => {
-            const categoryTags = tags.filter(t => t.category === category.slug);
+            const categoryTags = tags.filter(t => t.category?.toUpperCase() === category.slug?.toUpperCase());
             if (categoryTags.length === 0) return null;
             
-            const categorySubcats = subcategories.filter(sc => sc.category === category.slug);
+            const categorySubcats = subcategories.filter(sc => sc.category?.toUpperCase() === category.slug?.toUpperCase());
             const unassignedTags = categoryTags.filter(t => !t.subcategoryId);
             
             return (
