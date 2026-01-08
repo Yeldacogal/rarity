@@ -44,7 +44,7 @@ export class HealthController {
     });
 
     await this.userRepo.save({
-      name: 'Ayşe Yılmaz',
+      name: 'Ayse Yilmaz',
       email: 'ayse@example.com',
       passwordHash: userPassword,
       role: UserRole.USER,
@@ -63,29 +63,29 @@ export class HealthController {
     });
 
     await this.subcategoryRepo.save([
-      { name: 'Cilt Bakımı', slug: 'cilt-bakimi', category: categoryBakim },
-      { name: 'Saç Bakımı', slug: 'sac-bakimi', category: categoryBakim },
-      { name: 'Vücut Bakımı', slug: 'vucut-bakimi', category: categoryBakim },
-      { name: 'Göz Makyajı', slug: 'goz-makyaji', category: categoryMakyaj },
-      { name: 'Dudak Makyajı', slug: 'dudak-makyaji', category: categoryMakyaj },
-      { name: 'Yüz Makyajı', slug: 'yuz-makyaji', category: categoryMakyaj },
+      { name: 'Cilt Bakimi', slug: 'cilt-bakimi', category: categoryBakim },
+      { name: 'Sac Bakimi', slug: 'sac-bakimi', category: categoryBakim },
+      { name: 'Vucut Bakimi', slug: 'vucut-bakimi', category: categoryBakim },
+      { name: 'Goz Makyaji', slug: 'goz-makyaji', category: categoryMakyaj },
+      { name: 'Dudak Makyaji', slug: 'dudak-makyaji', category: categoryMakyaj },
+      { name: 'Yuz Makyaji', slug: 'yuz-makyaji', category: categoryMakyaj },
     ]);
 
     await this.tagRepo.save([
       { name: 'Kuru Cilt', slug: 'kuru-cilt', category: categoryBakim },
-      { name: 'Yağlı Cilt', slug: 'yagli-cilt', category: categoryBakim },
+      { name: 'Yagli Cilt', slug: 'yagli-cilt', category: categoryBakim },
       { name: 'Karma Cilt', slug: 'karma-cilt', category: categoryBakim },
       { name: 'Akne', slug: 'akne', category: categoryBakim },
       { name: 'Nemlendirici', slug: 'nemlendirici', category: categoryBakim },
-      { name: 'Güneş Koruyucu', slug: 'gunes-koruyucu', category: categoryBakim },
+      { name: 'Gunes Koruyucu', slug: 'gunes-koruyucu', category: categoryBakim },
       { name: 'Serum', slug: 'serum', category: categoryBakim },
-      { name: 'Fondöten', slug: 'fondoten', category: categoryMakyaj },
+      { name: 'Fondoten', slug: 'fondoten', category: categoryMakyaj },
       { name: 'Ruj', slug: 'ruj', category: categoryMakyaj },
       { name: 'Maskara', slug: 'maskara', category: categoryMakyaj },
       { name: 'Far', slug: 'far', category: categoryMakyaj },
       { name: 'Eyeliner', slug: 'eyeliner', category: categoryMakyaj },
-      { name: 'Allık', slug: 'allik', category: categoryMakyaj },
-      { name: 'Kapatıcı', slug: 'kapatici', category: categoryMakyaj },
+      { name: 'Allik', slug: 'allik', category: categoryMakyaj },
+      { name: 'Kapatici', slug: 'kapatici', category: categoryMakyaj },
     ]);
 
     return { message: 'Seed completed successfully', status: 'success' };
