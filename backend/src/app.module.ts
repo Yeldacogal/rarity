@@ -14,6 +14,10 @@ import { BookmarksModule } from './modules/bookmarks/bookmarks.module';
 import { UploadsModule } from './modules/uploads/uploads.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { HealthController } from './health.controller';
+import { User } from './entities/user.entity';
+import { Tag } from './entities/tag.entity';
+import { Category } from './entities/category.entity';
+import { Subcategory } from './entities/subcategory.entity';
 
 @Module({
   imports: [
@@ -63,6 +67,7 @@ import { HealthController } from './health.controller';
     BookmarksModule,
     UploadsModule,
     CategoriesModule,
+    TypeOrmModule.forFeature([User, Tag, Category, Subcategory]),
   ],
   controllers: [HealthController],
 })
