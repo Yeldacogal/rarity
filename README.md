@@ -2,75 +2,6 @@
 
 ✨ RARITY, cilt bakımı ve makyaj konularında soru sorma, cevaplama ve deneyim paylaşma platformudur.
 
-## 🚀 Hızlı Başlangıç
-
-### ⚠️ ÖNEMLİ: Veritabanı Kurulumu (İLK ADIM)
-
-**PostgreSQL'de "rarity" veritabanını oluşturun:**
-
-1. **pgAdmin'i açın**
-2. **Servers > PostgreSQL'e sağ tıklayın** → "Create" → "Database"
-3. **Database adı:** `rarity` (küçük harf)
-4. **Save** butonuna tıklayın
-
-### 📦 Kurulum
-
-#### 1. Backend Kurulumu
-
-```bash
-cd backend
-
-# .env dosyasını oluşturun
-copy .env.example .env
-
-# .env dosyasını düzenleyin (PostgreSQL şifrenizi girin)
-# DB_PASS=your_postgres_password
-
-# Bağımlılıkları yükleyin
-npm install
-
-# Veritabanını seed edin (demo veriler)
-npm run seed
-
-# Geliştirme sunucusunu başlatın
-npm run start:dev
-```
-
-#### 2. Frontend Kurulumu
-
-Yeni terminal açın:
-
-```bash
-cd frontend
-
-# .env dosyasını oluşturun
-copy .env.example .env
-
-# Bağımlılıkları yükleyin
-npm install
-
-# Geliştirme sunucusunu başlatın
-npm run dev
-```
-
-### 🌐 Erişim
-
-- **Frontend:** http://localhost:5173
-- **Backend API:** http://localhost:3000
-- **Health Check:** http://localhost:3000/health
-
----
-
-## 👤 Demo Hesapları
-
-| Rol   | E-posta            | Şifre    |
-| ----- | ------------------ | -------- |
-| Admin | admin@rarity.com   | admin123 |
-| User  | ayse@example.com   | user123  |
-| User  | fatma@example.com  | user123  |
-| User  | zeynep@example.com | user123  |
-
----
 
 ## 🛠️ Teknolojiler
 
@@ -240,25 +171,7 @@ npm run dev
 
 ---
 
-## ☁️ Cloud Deployment Checklist
 
-Deploy öncesi kontrol listesi:
-
-- [ ] `DATABASE_URL` env değişkenini cloud PostgreSQL URL'ine güncelle
-- [ ] `FRONTEND_URL` env değişkenini production domain'e güncelle
-- [ ] `NODE_ENV=production` olarak ayarla
-- [ ] `JWT_SECRET` güvenli bir değere güncelle
-- [ ] CORS ayarlarını kontrol et
-- [ ] TypeORM synchronize'ı kapat (production'da migration kullan)
-- [ ] SSL ayarı aktif olsun: `ssl: { rejectUnauthorized: false }`
-
----
-
-## 📝 Lisans
-
-MIT License
-
----
 
 ## 🤝 Destek
 
