@@ -124,7 +124,7 @@ export default function QuestionsPage() {
   const selectedTagIds = selectedTags ? selectedTags.split(',').map(Number) : [];
 
   const filteredSubcategories = selectedCategory 
-    ? subcategories.filter(sc => sc.category === selectedCategory)
+    ? subcategories.filter(sc => sc.category?.toUpperCase() === selectedCategory.toUpperCase())
     : [];
 
   const filteredTags = tags.filter(tag => {
@@ -132,7 +132,7 @@ export default function QuestionsPage() {
       return tag.subcategoryId === selectedSubcategoryId;
     }
     if (selectedCategory) {
-      return tag.category === selectedCategory;
+      return tag.category?.toUpperCase() === selectedCategory.toUpperCase();
     }
     return false;
   });

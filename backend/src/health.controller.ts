@@ -96,4 +96,11 @@ export class HealthController {
 
     return { message: 'Seed completed successfully', status: 'success' };
   }
+
+  @Post('fix-icons')
+  async fixIcons() {
+    await this.categoryRepo.update({ slug: 'bakim' }, { icon: '🧴' });
+    await this.categoryRepo.update({ slug: 'makyaj' }, { icon: '💄' });
+    return { message: 'Icons fixed', status: 'success' };
+  }
 }
