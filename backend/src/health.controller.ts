@@ -1,6 +1,6 @@
 import { Controller, Get, Post } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, DataSource } from 'typeorm';
+import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { User } from './entities/user.entity';
 import { Tag } from './entities/tag.entity';
@@ -11,7 +11,6 @@ import { UserRole } from './common/enums/user-role.enum';
 @Controller('health')
 export class HealthController {
   constructor(
-    private dataSource: DataSource,
     @InjectRepository(User) private userRepo: Repository<User>,
     @InjectRepository(Tag) private tagRepo: Repository<Tag>,
     @InjectRepository(Category) private categoryRepo: Repository<Category>,
