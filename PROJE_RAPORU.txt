@@ -3,12 +3,12 @@ Proje Raporu
 
 ================================================================================
 
-Ogrenci: [AD SOYAD]
-Ogrenci No: [OGRENCI NO]
-Ders: Web Teknolojileri
+Ogrenci: Yelda ÇOĞAL
+Ogrenci No: 23253044
+Ders: Web Tabanlı Teknolojileri
 Tarih: Ocak 2026
 
-Canli Proje Linki: [BURAYA DEPLOY LINKINI EKLEYIN]
+Canli Proje Linki: https://rarity-phi-five.vercel.app
 
 ================================================================================
 ICINDEKILER
@@ -507,10 +507,10 @@ uygulamasidir:
   question_tags ara tablosu ile yonetilmektedir.
 - Frontend'den iliski yonetimi: Soru olusturma ve duzenleme islemlerinde 
   etiketler secilebilmektedir.
-- Bulut deploy: [DEPLOY LINKI]
+- Bulut deploy: https://rarity-phi-five.vercel.app
 
 ================================================================================
 
-Canli Proje Linki: [BURAYA DEPLOY LINKINI EKLEYIN]
+Canli Proje Linki: https://rarity-phi-five.vercel.app
 
 ================================================================================
