@@ -51,15 +51,15 @@ export class HealthController {
     });
 
     const categoryBakim = await this.categoryRepo.save({
-      name: 'Bakım',
+      name: 'Bakim',
       slug: 'bakim',
-      icon: '🧴',
+      icon: 'lotion',
     });
 
     const categoryMakyaj = await this.categoryRepo.save({
       name: 'Makyaj',
       slug: 'makyaj',
-      icon: '💄',
+      icon: 'lipstick',
     });
 
     await this.subcategoryRepo.save([
