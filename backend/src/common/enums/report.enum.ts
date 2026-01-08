@@ -1,0 +1,12 @@
+export enum ReportReason {
+  SPAM = 'SPAM',
+  HARASSMENT = 'HARASSMENT',
+  INAPPROPRIATE = 'INAPPROPRIATE',
+  MISINFORMATION = 'MISINFORMATION',
+  OTHER = 'OTHER',
+}
+
+export enum ReportStatus {
+  OPEN = 'OPEN',
+  RESOLVED = 'RESOLVED',
+}

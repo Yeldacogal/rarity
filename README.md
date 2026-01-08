@@ -1,0 +1,267 @@
+# RARITY - Cilt Bakımı & Makyaj Soru-Cevap Topluluğu
+
+✨ RARITY, cilt bakımı ve makyaj konularında soru sorma, cevaplama ve deneyim paylaşma platformudur.
+
+## 🚀 Hızlı Başlangıç
+
+### ⚠️ ÖNEMLİ: Veritabanı Kurulumu (İLK ADIM)
+
+**PostgreSQL'de "rarity" veritabanını oluşturun:**
+
+1. **pgAdmin'i açın**
+2. **Servers > PostgreSQL'e sağ tıklayın** → "Create" → "Database"
+3. **Database adı:** `rarity` (küçük harf)
+4. **Save** butonuna tıklayın
+
+### 📦 Kurulum
+
+#### 1. Backend Kurulumu
+
+```bash
+cd backend
+
+# .env dosyasını oluşturun
+copy .env.example .env
+
+# .env dosyasını düzenleyin (PostgreSQL şifrenizi girin)
+# DB_PASS=your_postgres_password
+
+# Bağımlılıkları yükleyin
+npm install
+
+# Veritabanını seed edin (demo veriler)
+npm run seed
+
+# Geliştirme sunucusunu başlatın
+npm run start:dev
+```
+
+#### 2. Frontend Kurulumu
+
+Yeni terminal açın:
+
+```bash
+cd frontend
+
+# .env dosyasını oluşturun
+copy .env.example .env
+
+# Bağımlılıkları yükleyin
+npm install
+
+# Geliştirme sunucusunu başlatın
+npm run dev
+```
+
+### 🌐 Erişim
+
+- **Frontend:** http://localhost:5173
+- **Backend API:** http://localhost:3000
+- **Health Check:** http://localhost:3000/health
+
+---
+
+## 👤 Demo Hesapları
+
+| Rol   | E-posta            | Şifre    |
+| ----- | ------------------ | -------- |
+| Admin | admin@rarity.com   | admin123 |
+| User  | ayse@example.com   | user123  |
+| User  | fatma@example.com  | user123  |
+| User  | zeynep@example.com | user123  |
+
+---
+
+## 🛠️ Teknolojiler
+
+### Backend
+
+- **Framework:** NestJS (TypeScript)
+- **ORM:** TypeORM
+- **Database:** PostgreSQL
+- **Auth:** JWT + Passport
+
+### Frontend
+
+- **Framework:** React + Vite (TypeScript)
+- **Styling:** TailwindCSS + Flowbite
+- **HTTP:** Axios
+- **Routing:** React Router DOM
+
+---
+
+## 📚 API Endpoints
+
+### Auth
+
+| Method | Endpoint       | Açıklama             |
+| ------ | -------------- | -------------------- |
+| POST   | /auth/register | Yeni kullanıcı kaydı |
+| POST   | /auth/login    | Kullanıcı girişi     |
+
+### Users
+
+| Method | Endpoint           | Açıklama                         |
+| ------ | ------------------ | -------------------------------- |
+| GET    | /users/me          | Mevcut kullanıcı bilgileri (JWT) |
+| GET    | /users/profile/:id | Kullanıcı profili (public)       |
+| GET    | /users             | Tüm kullanıcılar (Admin)         |
+| PATCH  | /users/:id/ban     | Ban/Unban toggle (Admin)         |
+| DELETE | /users/:id         | Kullanıcıyı sil (Admin)          |
+
+### Questions
+
+| Method | Endpoint            | Açıklama                                       |
+| ------ | ------------------- | ---------------------------------------------- |
+| GET    | /questions          | Sorular listesi (arama, filtreleme, sayfalama) |
+| GET    | /questions/:id      | Soru detayı                                    |
+| GET    | /questions/my       | Kullanıcının soruları (JWT)                    |
+| POST   | /questions          | Yeni soru oluştur (JWT)                        |
+| PATCH  | /questions/:id      | Soru güncelle (Owner/Admin)                    |
+| PUT    | /questions/:id/tags | Soru etiketlerini güncelle (Owner/Admin)       |
+| DELETE | /questions/:id      | Soru sil (Owner/Admin)                         |
+
+### Answers
+
+| Method | Endpoint               | Açıklama                     |
+| ------ | ---------------------- | ---------------------------- |
+| POST   | /questions/:id/answers | Cevap ekle (JWT)             |
+| PATCH  | /answers/:id           | Cevap güncelle (Owner/Admin) |
+| DELETE | /answers/:id           | Cevap sil (Owner/Admin)      |
+
+### Votes
+
+| Method | Endpoint                 | Açıklama                      |
+| ------ | ------------------------ | ----------------------------- |
+| POST   | /answers/:id/votes       | Oy ver/kaldır (toggle) (JWT)  |
+| GET    | /answers/:id/votes/count | Oy sayısı                     |
+| GET    | /answers/:id/votes/check | Kullanıcı oy vermiş mi? (JWT) |
+
+### Tags
+
+| Method | Endpoint  | Açıklama                |
+| ------ | --------- | ----------------------- |
+| GET    | /tags     | Tüm etiketler (public)  |
+| POST   | /tags     | Etiket oluştur (Admin)  |
+| PATCH  | /tags/:id | Etiket güncelle (Admin) |
+| DELETE | /tags/:id | Etiket sil (Admin)      |
+
+### Reports
+
+| Method | Endpoint             | Açıklama                |
+| ------ | -------------------- | ----------------------- |
+| POST   | /answers/:id/reports | Cevabı şikayet et (JWT) |
+
+### Admin
+
+| Method | Endpoint                   | Açıklama                                 |
+| ------ | -------------------------- | ---------------------------------------- |
+| GET    | /admin/reports             | Şikayetleri listele (Admin)              |
+| PATCH  | /admin/reports/:id/resolve | Şikayeti çözüldü olarak işaretle (Admin) |
+| DELETE | /admin/answers/:id         | Cevabı moderasyon ile sil (Admin)        |
+| GET    | /admin/stats               | İstatistikler (Admin)                    |
+
+---
+
+## 🗄️ Veritabanı Şeması
+
+### Entity'ler
+
+1. **User** - Kullanıcı
+
+   - id, name, email, passwordHash, role (ADMIN/USER), isBanned, createdAt
+
+2. **Question** - Soru
+
+   - id, title, content, imageUrl, createdAt, updatedAt, authorId
+   - İlişkiler: author (User), answers (Answer[]), tags (Tag[])
+
+3. **Answer** - Cevap
+
+   - id, content, imageUrl, createdAt, updatedAt, authorId, questionId
+   - İlişkiler: author (User), question (Question), votes (Vote[]), reports (Report[])
+
+4. **Tag** - Etiket
+
+   - id, name
+   - İlişkiler: questions (Question[]) - N:N
+
+5. **Vote** - Faydalı Oyu
+
+   - id, userId, answerId
+   - Unique constraint: (userId, answerId)
+
+6. **Report** - Şikayet
+   - id, reason, details, status, createdAt, reporterId, answerId
+   - İlişkiler: reporter (User), answer (Answer)
+
+### İlişkiler
+
+- **1:N:** User → Questions, User → Answers, Question → Answers
+- **N:N:** Question ↔ Tag (question_tags ara tablosu)
+
+---
+
+## 📂 Proje Yapısı
+
+```
+/backend
+├── src/
+│   ├── common/
+│   │   ├── decorators/    # CurrentUser, Roles decorators
+│   │   ├── enums/         # UserRole, ReportReason, ReportStatus
+│   │   └── guards/        # RolesGuard, BannedGuard
+│   ├── entities/          # TypeORM entities
+│   ├── modules/
+│   │   ├── auth/          # Auth module (register, login, JWT)
+│   │   ├── users/         # Users module
+│   │   ├── questions/     # Questions module
+│   │   ├── answers/       # Answers module
+│   │   ├── tags/          # Tags module
+│   │   ├── votes/         # Votes module
+│   │   ├── reports/       # Reports module
+│   │   └── admin/         # Admin module
+│   ├── seeds/             # Database seeder
+│   ├── app.module.ts
+│   └── main.ts
+
+/frontend
+├── src/
+│   ├── components/        # React components
+│   ├── contexts/          # AuthContext
+│   ├── lib/               # API client (axios)
+│   ├── pages/             # Page components
+│   │   ├── admin/         # Admin pages
+│   │   └── ...
+│   ├── types/             # TypeScript types
+│   ├── App.tsx
+│   └── main.tsx
+```
+
+---
+
+## ☁️ Cloud Deployment Checklist
+
+Deploy öncesi kontrol listesi:
+
+- [ ] `DATABASE_URL` env değişkenini cloud PostgreSQL URL'ine güncelle
+- [ ] `FRONTEND_URL` env değişkenini production domain'e güncelle
+- [ ] `NODE_ENV=production` olarak ayarla
+- [ ] `JWT_SECRET` güvenli bir değere güncelle
+- [ ] CORS ayarlarını kontrol et
+- [ ] TypeORM synchronize'ı kapat (production'da migration kullan)
+- [ ] SSL ayarı aktif olsun: `ssl: { rejectUnauthorized: false }`
+
+---
+
+## 📝 Lisans
+
+MIT License
+
+---
+
+## 🤝 Destek
+
+Sorularınız için issue açabilirsiniz.
+
+**RARITY** ✨ - Güzellik dünyasının bilgi paylaşım platformu!
