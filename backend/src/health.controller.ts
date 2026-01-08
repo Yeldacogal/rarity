@@ -62,16 +62,19 @@ export class HealthController {
       icon: 'lipstick',
     });
 
-    await this.subcategoryRepo.save([
+    const subcategories = [
       { name: 'Cilt Bakimi', slug: 'cilt-bakimi', category: categoryBakim },
       { name: 'Sac Bakimi', slug: 'sac-bakimi', category: categoryBakim },
       { name: 'Vucut Bakimi', slug: 'vucut-bakimi', category: categoryBakim },
       { name: 'Goz Makyaji', slug: 'goz-makyaji', category: categoryMakyaj },
       { name: 'Dudak Makyaji', slug: 'dudak-makyaji', category: categoryMakyaj },
       { name: 'Yuz Makyaji', slug: 'yuz-makyaji', category: categoryMakyaj },
-    ]);
+    ];
+    for (const sub of subcategories) {
+      await this.subcategoryRepo.save(sub);
+    }
 
-    await this.tagRepo.save([
+    const tags = [
       { name: 'Kuru Cilt', slug: 'kuru-cilt', category: categoryBakim },
       { name: 'Yagli Cilt', slug: 'yagli-cilt', category: categoryBakim },
       { name: 'Karma Cilt', slug: 'karma-cilt', category: categoryBakim },
@@ -86,7 +89,10 @@ export class HealthController {
       { name: 'Eyeliner', slug: 'eyeliner', category: categoryMakyaj },
       { name: 'Allik', slug: 'allik', category: categoryMakyaj },
       { name: 'Kapatici', slug: 'kapatici', category: categoryMakyaj },
-    ]);
+    ];
+    for (const tag of tags) {
+      await this.tagRepo.save(tag);
+    }
 
     return { message: 'Seed completed successfully', status: 'success' };
   }
